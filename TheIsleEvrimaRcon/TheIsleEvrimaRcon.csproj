@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>evrima_icon.ico</ApplicationIcon>
+    <Authors>aerond</Authors>
+    <Title>The Isle Evrima RCON</Title>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="evrima_icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TheIsleEvrimaRconClient" Version="1.0.0" />
+    <PackageReference Include="TheIsleEvrimaRconClient.Extensions" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
