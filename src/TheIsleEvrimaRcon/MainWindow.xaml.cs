@@ -155,25 +155,25 @@ public partial class MainWindow : Window
     private void ShowHelp()
     {
         Log("─── Available Commands ───────────────────────────────", BrushAccent);
-        Log("  help                               Show this help", BrushSecondary);
-        Log("  announce <message>                 Announce to all players", BrushSecondary);
-        Log("  directmessage <playerId> <message> Send a direct message to a player", BrushSecondary);
-        Log("  playerlist                         List online players", BrushSecondary);
-        Log("  getplayerdata                      Detailed stats per player", BrushSecondary);
-        Log("  serverdetails                      Server configuration", BrushSecondary);
-        Log("  save                               Save game data", BrushSecondary);
-        Log("  wipecorpses                        Remove all corpses", BrushSecondary);
-        Log("  ban <playerId>                     Ban a player (EOS or Steam ID)", BrushSecondary);
-        Log("  kick <playerId>                    Kick a player (EOS or Steam ID)", BrushSecondary);
-        Log("  togglewhitelist                    Toggle server whitelist", BrushSecondary);
-        Log("  addwhitelistid <id[,id,...]>       Add player(s) to whitelist", BrushSecondary);
-        Log("  removewhitelistid <id[,id,...]>    Remove player(s) from whitelist", BrushSecondary);
-        Log("  toggleglobalchat                   Toggle global chat", BrushSecondary);
-        Log("  togglehumans                       Toggle humans", BrushSecondary);
-        Log("  toggleai                           Toggle AI spawns", BrushSecondary);
-        Log("  disableaiclasses <class[,class]>   Update AI spawn list", BrushSecondary);
-        Log("  aidensity <0.0-1.0>                Set AI spawn density", BrushSecondary);
-        Log("  updateplayables <class[,class]>    Set playable classes", BrushSecondary);
+        Log("  help                                      Show this help", BrushSecondary);
+        Log("  announce <message>                        Announce to all players", BrushSecondary);
+        Log("  directmessage <player>,<message>          Send a direct message to a player (EOS or Steam ID or Name)", BrushSecondary);
+        Log("  playerlist                                List online players", BrushSecondary);
+        Log("  getplayerdata                             Detailed stats per player", BrushSecondary);
+        Log("  serverdetails                             Server configuration", BrushSecondary);
+        Log("  save <backupName *optional*>              Save game data", BrushSecondary);
+        Log("  wipecorpses                               Remove all corpses", BrushSecondary);
+        Log("  ban <player>,<reason>                     Ban a player (EOS or Steam ID or Name)", BrushSecondary);
+        Log("  kick <player>,<reason>                    Kick a player (EOS or Steam ID or Name)", BrushSecondary);
+        Log("  togglewhitelist <0/1>                     Toggle server whitelist (0=disabled, 1=enabled)", BrushSecondary);
+        Log("  addwhitelistid <playerId>                 Add player(s) to whitelist", BrushSecondary);
+        Log("  removewhitelistid <playerId>              Remove player(s) from whitelist", BrushSecondary);
+        Log("  toggleglobalchat <0/1>                    Toggle global chat (0=disabled, 1=enabled)", BrushSecondary);
+        Log("  togglehumans <0/1>                        Toggle humans (0=disabled, 1=enabled)", BrushSecondary);
+        Log("  toggleai <0/1>                            Toggle AI spawns (0=disabled, 1=enabled)", BrushSecondary);
+        Log("  disableaiclasses <class[,class]>          Update AI spawn list", BrushSecondary);
+        Log("  aidensity <0.0-1.0>                       Set AI spawn density", BrushSecondary);
+        Log("  updateplayables <class:enabled/disabled>  Set playable classes", BrushSecondary);
         Log("─────────────────────────────────────────────────────", BrushAccent);
     }
 
@@ -227,7 +227,7 @@ public partial class MainWindow : Window
 
             Log($"Online players ({players.Count}):", BrushSuccess);
             foreach (var p in players)
-                Log($"  {p.PlayerName}  —  {p.PlayerId}");
+                Log($"  {p.PlayerName}  -  {p.PlayerId}");
         }
         catch (Exception ex)
         {
@@ -256,7 +256,7 @@ public partial class MainWindow : Window
 
             Log($"Player data ({data.Count}):", BrushSuccess);
             foreach (var p in data)
-                Log($"  {p.Name} [{p.Class}] growth:{p.Growth:P0} hp:{p.Health:P0} stamina:{p.Stamina:P0}");
+                Log($"  {p.Name} [{p.Gender} {p.Class}] growth:{p.Growth:P0} hp:{p.Health:P0} stamina:{p.Stamina:P0} hunger:{p.Hunger:P0} thirst:{p.Thirst:P0}");
         }
         catch (Exception ex)
         {
@@ -298,7 +298,7 @@ public partial class MainWindow : Window
             return;
         }
 
-        await RunAsync(rcon => rcon.SendCommandAsync($"kick {id}"), $"kick {id}");
+        await RunAsync(rcon => rcon.SendCommandAsync($"kick {id},You have been kicked from the server."), $"kick {id},You have been kicked from the server.");
     }
 
     private async void BtnBan_Click(object sender, RoutedEventArgs e)
@@ -315,6 +315,6 @@ public partial class MainWindow : Window
             "Confirm ban", MessageBoxButton.YesNo, MessageBoxImage.Warning);
         if (confirm != MessageBoxResult.Yes) return;
 
-        await RunAsync(rcon => rcon.SendCommandAsync($"ban {id}"), $"ban {id}");
+        await RunAsync(rcon => rcon.SendCommandAsync($"ban {id},You have been banned from the server."), $"ban {id},You have been banned from the server.");
     }
 }
