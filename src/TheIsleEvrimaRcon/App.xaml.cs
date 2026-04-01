@@ -19,7 +19,10 @@ namespace TheIsleEvrimaRcon
                 var uri = new Uri("pack://application:,,,/evrima_icon.ico", UriKind.Absolute);
                 AppIcon = System.Windows.Media.Imaging.BitmapFrame.Create(uri);
             }
-            catch { /* icon is optional */ }
+            catch
+            {
+                /* icon is optional */
+            }
         }
     }
 }

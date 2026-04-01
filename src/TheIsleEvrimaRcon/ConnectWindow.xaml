@@ -8,15 +8,15 @@
         Background="{StaticResource BgBrush}">
     <Grid Margin="28,24,28,24">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="16"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="16" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!-- Title -->
@@ -24,30 +24,30 @@
                    Text="Evrima RCON"
                    FontSize="20"
                    FontWeight="Bold"
-                   Foreground="{StaticResource AccentBrush}"/>
+                   Foreground="{StaticResource AccentBrush}" />
 
         <!-- Host -->
         <StackPanel Grid.Row="2">
-            <Label Content="HOST"/>
-            <TextBox x:Name="TxtHost" Height="32"/>
+            <Label Content="HOST" />
+            <TextBox x:Name="TxtHost" Height="32" />
         </StackPanel>
 
         <!-- Port + Password row -->
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="12"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="12" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <Label Content="PORT"/>
-                <TextBox x:Name="TxtPort" Height="32"/>
+                <Label Content="PORT" />
+                <TextBox x:Name="TxtPort" Height="32" />
             </StackPanel>
             <StackPanel Grid.Column="2">
-                <Label Content="PASSWORD"/>
+                <Label Content="PASSWORD" />
                 <Grid>
-                    <PasswordBox x:Name="PbPassword" Height="32" x:FieldModifier="private"/>
-                    <TextBox x:Name="TxtPasswordVisible" Height="32" Visibility="Collapsed"/>
+                    <PasswordBox x:Name="PbPassword" Height="32" x:FieldModifier="private" />
+                    <TextBox x:Name="TxtPasswordVisible" Height="32" Visibility="Collapsed" />
                 </Grid>
             </StackPanel>
         </Grid>
@@ -59,14 +59,13 @@
                   Foreground="{StaticResource TextSecondaryBrush}"
                   FontSize="12"
                   Checked="ChkShowPassword_Checked"
-                  Unchecked="ChkShowPassword_Unchecked"/>
+                  Unchecked="ChkShowPassword_Unchecked" />
 
         <!-- Connect button -->
         <Button Grid.Row="8"
                 x:Name="BtnConnect"
                 Content="Connect"
                 Height="36"
-                Click="BtnConnect_Click"/>
+                Click="BtnConnect_Click" />
     </Grid>
 </Window>
-

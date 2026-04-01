@@ -20,21 +20,21 @@ namespace TheIsleEvrimaRcon;
 public partial class MainWindow : Window
 {
     private readonly string _host;
-    private readonly int    _port;
+    private readonly int _port;
     private readonly string _password;
 
-    private static readonly SolidColorBrush BrushAccent    = new(Color.FromRgb(0xC8, 0xA8, 0x4B));
+    private static readonly SolidColorBrush BrushAccent = new(Color.FromRgb(0xC8, 0xA8, 0x4B));
     private static readonly SolidColorBrush BrushSecondary = new(Color.FromRgb(0x9A, 0x9A, 0x9A));
-    private static readonly SolidColorBrush BrushText      = new(Color.FromRgb(0xEF, 0xEF, 0xEF));
-    private static readonly SolidColorBrush BrushDanger    = new(Color.FromRgb(0xC0, 0x39, 0x2B));
-    private static readonly SolidColorBrush BrushSuccess   = new(Color.FromRgb(0x27, 0xAE, 0x60));
+    private static readonly SolidColorBrush BrushText = new(Color.FromRgb(0xEF, 0xEF, 0xEF));
+    private static readonly SolidColorBrush BrushDanger = new(Color.FromRgb(0xC0, 0x39, 0x2B));
+    private static readonly SolidColorBrush BrushSuccess = new(Color.FromRgb(0x27, 0xAE, 0x60));
 
-        public MainWindow(string host, int port, string password)
-        {
-            InitializeComponent();
-            if (App.AppIcon != null) Icon = App.AppIcon;
-        _host     = host;
-        _port     = port;
+    public MainWindow(string host, int port, string password)
+    {
+        InitializeComponent();
+        if (App.AppIcon != null) Icon = App.AppIcon;
+        _host = host;
+        _port = port;
         _password = password;
 
         Title = $"Evrima RCON :: {host}:{port}";
@@ -57,7 +57,10 @@ public partial class MainWindow : Window
                     Title = $"Evrima RCON :: {details.Name}";
                 }
             }
-            catch { /* non-critical, leave default title */ }
+            catch
+            {
+                /* non-critical, leave default title */
+            }
         };
     }
 
@@ -67,7 +70,7 @@ public partial class MainWindow : Window
     {
         var para = new Paragraph { Margin = new Thickness(0) };
         var timestamp = new Run($"[{DateTime.Now:HH:mm:ss}] ") { Foreground = BrushSecondary };
-        var text      = new Run(message) { Foreground = color ?? BrushText };
+        var text = new Run(message) { Foreground = color ?? BrushText };
         para.Inlines.Add(timestamp);
         para.Inlines.Add(text);
         RtbConsole.Document.Blocks.Add(para);
@@ -81,7 +84,8 @@ public partial class MainWindow : Window
     // ── RCON helpers ──────────────────────────────────────────────────────
 
     private EvrimaRconClient BuildClient() =>
-        new(new EvrimaRconClientConfiguration { Host = System.Net.IPAddress.Parse(_host), Port = _port, Password = _password });
+        new(new EvrimaRconClientConfiguration
+            { Host = System.Net.IPAddress.Parse(_host), Port = _port, Password = _password });
 
     private async Task RunAsync(Func<EvrimaRconClient, Task> action, string label)
     {
@@ -89,10 +93,18 @@ public partial class MainWindow : Window
         try
         {
             using var rcon = BuildClient();
-            if (!await rcon.ConnectAsync()) { Log("Connection failed.", BrushDanger); return; }
+            if (!await rcon.ConnectAsync())
+            {
+                Log("Connection failed.", BrushDanger);
+                return;
+            }
+
             await action(rcon);
         }
-        catch (Exception ex) { Log($"Error: {ex.Message}", BrushDanger); }
+        catch (Exception ex)
+        {
+            Log($"Error: {ex.Message}", BrushDanger);
+        }
     }
 
     private async Task RunAsync(Func<EvrimaRconClient, Task<string?>> action, string label)
@@ -101,11 +113,19 @@ public partial class MainWindow : Window
         try
         {
             using var rcon = BuildClient();
-            if (!await rcon.ConnectAsync()) { Log("Connection failed.", BrushDanger); return; }
+            if (!await rcon.ConnectAsync())
+            {
+                Log("Connection failed.", BrushDanger);
+                return;
+            }
+
             var result = await action(rcon);
             if (!string.IsNullOrWhiteSpace(result)) Log(result);
         }
-        catch (Exception ex) { Log($"Error: {ex.Message}", BrushDanger); }
+        catch (Exception ex)
+        {
+            Log($"Error: {ex.Message}", BrushDanger);
+        }
     }
 
     // ── Raw command ───────────────────────────────────────────────────────
@@ -159,7 +179,11 @@ public partial class MainWindow : Window
 
     private void TxtCommand_KeyDown(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.Enter) { e.Handled = true; BtnSend_Click(sender, e); }
+        if (e.Key == Key.Enter)
+        {
+            e.Handled = true;
+            BtnSend_Click(sender, e);
+        }
     }
 
     // ── Sidebar buttons ───────────────────────────────────────────────────
@@ -167,7 +191,12 @@ public partial class MainWindow : Window
     private async void BtnAnnounce_Click(object sender, RoutedEventArgs e)
     {
         var msg = TxtAnnounce.Text.Trim();
-        if (string.IsNullOrWhiteSpace(msg)) { Log("Enter a message to announce.", BrushDanger); return; }
+        if (string.IsNullOrWhiteSpace(msg))
+        {
+            Log("Enter a message to announce.", BrushDanger);
+            return;
+        }
+
         await RunAsync(rcon => rcon.SendCommandAsync($"announce {msg}"), $"announce {msg}");
     }
 
@@ -183,14 +212,27 @@ public partial class MainWindow : Window
         try
         {
             using var rcon = BuildClient();
-            if (!await rcon.ConnectAsync()) { Log("Connection failed.", BrushDanger); return; }
+            if (!await rcon.ConnectAsync())
+            {
+                Log("Connection failed.", BrushDanger);
+                return;
+            }
+
             List<ServerPlayer> players = await rcon.GetPlayerList();
-            if (players.Count == 0) { Log("No players online."); return; }
+            if (players.Count == 0)
+            {
+                Log("No players online.");
+                return;
+            }
+
             Log($"Online players ({players.Count}):", BrushSuccess);
             foreach (var p in players)
                 Log($"  {p.PlayerName}  —  {p.PlayerId}");
         }
-        catch (Exception ex) { Log($"Error: {ex.Message}", BrushDanger); }
+        catch (Exception ex)
+        {
+            Log($"Error: {ex.Message}", BrushDanger);
+        }
     }
 
     private async void BtnPlayerData_Click(object sender, RoutedEventArgs e)
@@ -199,14 +241,27 @@ public partial class MainWindow : Window
         try
         {
             using var rcon = BuildClient();
-            if (!await rcon.ConnectAsync()) { Log("Connection failed.", BrushDanger); return; }
+            if (!await rcon.ConnectAsync())
+            {
+                Log("Connection failed.", BrushDanger);
+                return;
+            }
+
             List<PlayerData> data = await rcon.GetPlayerData();
-            if (data.Count == 0) { Log("No player data returned."); return; }
+            if (data.Count == 0)
+            {
+                Log("No player data returned.");
+                return;
+            }
+
             Log($"Player data ({data.Count}):", BrushSuccess);
             foreach (var p in data)
                 Log($"  {p.Name} [{p.Class}] growth:{p.Growth:P0} hp:{p.Health:P0} stamina:{p.Stamina:P0}");
         }
-        catch (Exception ex) { Log($"Error: {ex.Message}", BrushDanger); }
+        catch (Exception ex)
+        {
+            Log($"Error: {ex.Message}", BrushDanger);
+        }
     }
 
     private async void BtnServerDetails_Click(object sender, RoutedEventArgs e)
@@ -215,7 +270,12 @@ public partial class MainWindow : Window
         try
         {
             using var rcon = BuildClient();
-            if (!await rcon.ConnectAsync()) { Log("Connection failed.", BrushDanger); return; }
+            if (!await rcon.ConnectAsync())
+            {
+                Log("Connection failed.", BrushDanger);
+                return;
+            }
+
             ServerDetails d = await rcon.GetServerDetails();
             Log($"Server: {d.Name}", BrushSuccess);
             Log($"  Map: {d.Map}  |  Players: {d.CurrentPlayers}/{d.MaxPlayers}");
@@ -223,20 +283,32 @@ public partial class MainWindow : Window
             Log($"  Global Chat: {d.GlobalChatEnabled}  |  Mutations: {d.MutationsEnabled}");
             Log($"  Day: {d.DayLengthMinutes}m  |  Night: {d.NightLengthMinutes}m");
         }
-        catch (Exception ex) { Log($"Error: {ex.Message}", BrushDanger); }
+        catch (Exception ex)
+        {
+            Log($"Error: {ex.Message}", BrushDanger);
+        }
     }
 
     private async void BtnKick_Click(object sender, RoutedEventArgs e)
     {
         var id = TxtPlayerId.Text.Trim();
-        if (string.IsNullOrWhiteSpace(id)) { Log("Enter a Player ID to kick.", BrushDanger); return; }
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            Log("Enter a Player ID to kick.", BrushDanger);
+            return;
+        }
+
         await RunAsync(rcon => rcon.SendCommandAsync($"kick {id}"), $"kick {id}");
     }
 
     private async void BtnBan_Click(object sender, RoutedEventArgs e)
     {
         var id = TxtPlayerId.Text.Trim();
-        if (string.IsNullOrWhiteSpace(id)) { Log("Enter a Player ID to ban.", BrushDanger); return; }
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            Log("Enter a Player ID to ban.", BrushDanger);
+            return;
+        }
 
         var confirm = MessageBox.Show(
             $"Ban player {id}?",

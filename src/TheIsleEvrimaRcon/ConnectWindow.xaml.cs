@@ -9,8 +9,8 @@ namespace TheIsleEvrimaRcon
     {
         private const string ConnectionFile = "rcon.con";
 
-        public string Host     { get; private set; } = "";
-        public int    Port     { get; private set; }
+        public string Host { get; private set; } = "";
+        public int Port { get; private set; }
         public string Password { get; private set; } = "";
 
         public ConnectWindow()
@@ -29,12 +29,13 @@ namespace TheIsleEvrimaRcon
                 {
                     TxtHost.Text = lines[0].Trim();
                     TxtPort.Text = lines[1].Trim();
-                    PbPassword.Password        = lines[2].Trim();
-                    TxtPasswordVisible.Text    = lines[2].Trim();
+                    PbPassword.Password = lines[2].Trim();
+                    TxtPasswordVisible.Text = lines[2].Trim();
                     BtnConnect.Focus();
                     return;
                 }
             }
+
             TxtHost.Focus();
         }
 
@@ -42,20 +43,25 @@ namespace TheIsleEvrimaRcon
         {
             if (!IPAddress.TryParse(TxtHost.Text.Trim(), out var address))
             {
-                MessageBox.Show("Enter a valid host IP address.", "Invalid host", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Enter a valid host IP address.", "Invalid host", MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
+
             if (!int.TryParse(TxtPort.Text.Trim(), out int port))
             {
-                MessageBox.Show("Enter a valid port number.", "Invalid port", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Enter a valid port number.", "Invalid port", MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
+
             var password = ChkShowPassword.IsChecked == true
                 ? TxtPasswordVisible.Text
                 : PbPassword.Password;
             if (string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Enter the RCON password.", "Password required", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Enter the RCON password.", "Password required", MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
 
@@ -64,8 +70,8 @@ namespace TheIsleEvrimaRcon
 
             var config = new EvrimaRconClientConfiguration
             {
-                Host     = address,
-                Port     = port,
+                Host = address,
+                Port = port,
                 Password = password
             };
 
@@ -83,8 +89,8 @@ namespace TheIsleEvrimaRcon
                 return;
             }
 
-            Host     = address.ToString();
-            Port     = port;
+            Host = address.ToString();
+            Port = port;
             Password = password;
 
             File.WriteAllText(ConnectionFile, $"{Host}\n{Port}\n{Password}");
@@ -96,29 +102,28 @@ namespace TheIsleEvrimaRcon
 
         private void SetFormEnabled(bool enabled)
         {
-            TxtHost.IsEnabled              = enabled;
-            TxtPort.IsEnabled              = enabled;
-            PbPassword.IsEnabled           = enabled;
-            TxtPasswordVisible.IsEnabled   = enabled;
-            ChkShowPassword.IsEnabled      = enabled;
-            BtnConnect.IsEnabled           = enabled;
+            TxtHost.IsEnabled = enabled;
+            TxtPort.IsEnabled = enabled;
+            PbPassword.IsEnabled = enabled;
+            TxtPasswordVisible.IsEnabled = enabled;
+            ChkShowPassword.IsEnabled = enabled;
+            BtnConnect.IsEnabled = enabled;
         }
 
         private void ChkShowPassword_Checked(object sender, RoutedEventArgs e)
         {
-            TxtPasswordVisible.Text    = PbPassword.Password;
+            TxtPasswordVisible.Text = PbPassword.Password;
             TxtPasswordVisible.Visibility = Visibility.Visible;
-            PbPassword.Visibility         = Visibility.Collapsed;
+            PbPassword.Visibility = Visibility.Collapsed;
             TxtPasswordVisible.Focus();
         }
 
         private void ChkShowPassword_Unchecked(object sender, RoutedEventArgs e)
         {
-            PbPassword.Password        = TxtPasswordVisible.Text;
-            PbPassword.Visibility         = Visibility.Visible;
+            PbPassword.Password = TxtPasswordVisible.Text;
+            PbPassword.Visibility = Visibility.Visible;
             TxtPasswordVisible.Visibility = Visibility.Collapsed;
             PbPassword.Focus();
         }
     }
 }
-

@@ -99,30 +99,6 @@ Type `help` in the command bar at any time to print this list to the console.
 
 ---
 
-## Enabling RCON on an Evrima Server
-
-Open `Game.ini` located at `...\Saved\Config\WindowsServer` and add or edit the following.
-
-Under `[/script/theisle.tigamesession]`:
-```ini
-bRconEnabled=true
-RconPassword=your_password
-RconPort=8888
-```
-
-Under `[/Script/Engine.Game]`:
-```ini
-RconEnabled=true
-RconPassword=your_password
-RconPort=8888
-```
-
-> **Note:** The password and port must be identical in both sections.
-
-Also open port `8888` (or your chosen port) in **Windows Firewall** on the server machine.
-
----
-
 ## Important Notes
 
 - RCON is an **unencrypted** protocol — the password and all commands are transmitted in plain text. Avoid using it over untrusted networks; prefer a local network or VPN.
@@ -133,7 +109,7 @@ Also open port `8888` (or your chosen port) in **Windows Firewall** on the serve
 ## Building from Source
 
 ```
-dotnet build TheIsleEvrimaRconWPF.csproj
+dotnet build TheIsleEvrimaRcon.csproj
 ```
 
 Requires .NET 8 SDK. The project uses:

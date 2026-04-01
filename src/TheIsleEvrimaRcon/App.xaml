@@ -15,36 +15,36 @@
         <Color x:Key="DangerColor">#C0392B</Color>
         <Color x:Key="SuccessColor">#27AE60</Color>
 
-        <SolidColorBrush x:Key="BgDeepBrush"      Color="{StaticResource BgDeepColor}"/>
-        <SolidColorBrush x:Key="BgBrush"          Color="{StaticResource BgColor}"/>
-        <SolidColorBrush x:Key="BgElevatedBrush"  Color="{StaticResource BgElevatedColor}"/>
-        <SolidColorBrush x:Key="BorderBrush"      Color="{StaticResource BorderColor}"/>
-        <SolidColorBrush x:Key="AccentBrush"      Color="{StaticResource AccentColor}"/>
-        <SolidColorBrush x:Key="AccentHoverBrush" Color="{StaticResource AccentHoverColor}"/>
-        <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}"/>
-        <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}"/>
-        <SolidColorBrush x:Key="DangerBrush"      Color="{StaticResource DangerColor}"/>
-        <SolidColorBrush x:Key="SuccessBrush"     Color="{StaticResource SuccessColor}"/>
+        <SolidColorBrush x:Key="BgDeepBrush" Color="{StaticResource BgDeepColor}" />
+        <SolidColorBrush x:Key="BgBrush" Color="{StaticResource BgColor}" />
+        <SolidColorBrush x:Key="BgElevatedBrush" Color="{StaticResource BgElevatedColor}" />
+        <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}" />
+        <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+        <SolidColorBrush x:Key="AccentHoverBrush" Color="{StaticResource AccentHoverColor}" />
+        <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}" />
+        <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}" />
+        <SolidColorBrush x:Key="DangerBrush" Color="{StaticResource DangerColor}" />
+        <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource SuccessColor}" />
 
         <!-- Base TextBlock -->
         <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize"   Value="13"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="13" />
         </Style>
 
         <!-- TextBox -->
         <Style TargetType="TextBox">
-            <Setter Property="Background"               Value="{StaticResource BgElevatedBrush}"/>
-            <Setter Property="Foreground"               Value="{StaticResource TextPrimaryBrush}"/>
-            <Setter Property="CaretBrush"               Value="{StaticResource AccentBrush}"/>
-            <Setter Property="BorderBrush"              Value="{StaticResource BorderBrush}"/>
-            <Setter Property="BorderThickness"          Value="1"/>
-            <Setter Property="Padding"                  Value="8,0"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontFamily"               Value="Segoe UI"/>
-            <Setter Property="FontSize"                 Value="13"/>
-            <Setter Property="SelectionBrush"           Value="{StaticResource AccentBrush}"/>
+            <Setter Property="Background" Value="{StaticResource BgElevatedBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+            <Setter Property="CaretBrush" Value="{StaticResource AccentBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="SelectionBrush" Value="{StaticResource AccentBrush}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -57,11 +57,11 @@
                                           HorizontalScrollBarVisibility="Hidden"
                                           VerticalScrollBarVisibility="Hidden"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          Margin="{TemplateBinding Padding}"/>
+                                          Margin="{TemplateBinding Padding}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -71,16 +71,16 @@
 
         <!-- PasswordBox -->
         <Style TargetType="PasswordBox">
-            <Setter Property="Background"               Value="{StaticResource BgElevatedBrush}"/>
-            <Setter Property="Foreground"               Value="{StaticResource TextPrimaryBrush}"/>
-            <Setter Property="CaretBrush"               Value="{StaticResource AccentBrush}"/>
-            <Setter Property="BorderBrush"              Value="{StaticResource BorderBrush}"/>
-            <Setter Property="BorderThickness"          Value="1"/>
-            <Setter Property="Padding"                  Value="8,0"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontFamily"               Value="Segoe UI"/>
-            <Setter Property="FontSize"                 Value="13"/>
-            <Setter Property="SelectionBrush"           Value="{StaticResource AccentBrush}"/>
+            <Setter Property="Background" Value="{StaticResource BgElevatedBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+            <Setter Property="CaretBrush" Value="{StaticResource AccentBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="SelectionBrush" Value="{StaticResource AccentBrush}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="PasswordBox">
@@ -93,11 +93,11 @@
                                           HorizontalScrollBarVisibility="Hidden"
                                           VerticalScrollBarVisibility="Hidden"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          Margin="{TemplateBinding Padding}"/>
+                                          Margin="{TemplateBinding Padding}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -107,14 +107,14 @@
 
         <!-- Button -->
         <Style TargetType="Button">
-            <Setter Property="Background"      Value="{StaticResource AccentBrush}"/>
-            <Setter Property="Foreground"      Value="#1A1A1A"/>
-            <Setter Property="FontFamily"      Value="Segoe UI"/>
-            <Setter Property="FontSize"        Value="13"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding"         Value="16,7"/>
-            <Setter Property="Cursor"          Value="Hand"/>
+            <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+            <Setter Property="Foreground" Value="#1A1A1A" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="16,7" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -122,17 +122,18 @@
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="4"
                                 Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Root" Property="Background" Value="{StaticResource AccentHoverBrush}"/>
+                                <Setter TargetName="Root" Property="Background"
+                                        Value="{StaticResource AccentHoverBrush}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Root" Property="Opacity" Value="0.85"/>
+                                <Setter TargetName="Root" Property="Opacity" Value="0.85" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Root" Property="Opacity" Value="0.4"/>
+                                <Setter TargetName="Root" Property="Opacity" Value="0.4" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -142,8 +143,8 @@
 
         <!-- Secondary / subtle button -->
         <Style x:Key="SubtleButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="Background"  Value="{StaticResource BgElevatedBrush}"/>
-            <Setter Property="Foreground"  Value="{StaticResource TextPrimaryBrush}"/>
+            <Setter Property="Background" Value="{StaticResource BgElevatedBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -153,17 +154,17 @@
                                 BorderThickness="1"
                                 CornerRadius="4"
                                 Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Root" Property="Opacity" Value="0.8"/>
+                                <Setter TargetName="Root" Property="Opacity" Value="0.8" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Root" Property="Opacity" Value="0.4"/>
+                                <Setter TargetName="Root" Property="Opacity" Value="0.4" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -173,8 +174,8 @@
 
         <!-- Danger button -->
         <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="Background" Value="{StaticResource DangerBrush}"/>
-            <Setter Property="Foreground" Value="#EFEFEF"/>
+            <Setter Property="Background" Value="{StaticResource DangerBrush}" />
+            <Setter Property="Foreground" Value="#EFEFEF" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -182,17 +183,17 @@
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="4"
                                 Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Root" Property="Opacity" Value="0.85"/>
+                                <Setter TargetName="Root" Property="Opacity" Value="0.85" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Root" Property="Opacity" Value="0.7"/>
+                                <Setter TargetName="Root" Property="Opacity" Value="0.7" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Root" Property="Opacity" Value="0.4"/>
+                                <Setter TargetName="Root" Property="Opacity" Value="0.4" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -202,53 +203,53 @@
 
         <!-- ComboBox -->
         <Style TargetType="ComboBox">
-            <Setter Property="Background"      Value="{StaticResource BgElevatedBrush}"/>
-            <Setter Property="Foreground"      Value="{StaticResource TextPrimaryBrush}"/>
-            <Setter Property="BorderBrush"     Value="{StaticResource BorderBrush}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding"         Value="6,5"/>
-            <Setter Property="FontFamily"      Value="Segoe UI"/>
-            <Setter Property="FontSize"        Value="13"/>
+            <Setter Property="Background" Value="{StaticResource BgElevatedBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="6,5" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="13" />
         </Style>
 
         <Style TargetType="ComboBoxItem">
-            <Setter Property="Background" Value="{StaticResource BgElevatedBrush}"/>
-            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
-            <Setter Property="Padding"    Value="8,5"/>
+            <Setter Property="Background" Value="{StaticResource BgElevatedBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+            <Setter Property="Padding" Value="8,5" />
             <Style.Triggers>
                 <Trigger Property="IsHighlighted" Value="True">
-                    <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
-                    <Setter Property="Foreground" Value="#1A1A1A"/>
+                    <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+                    <Setter Property="Foreground" Value="#1A1A1A" />
                 </Trigger>
             </Style.Triggers>
         </Style>
 
         <!-- Label -->
         <Style TargetType="Label">
-            <Setter Property="Foreground"  Value="{StaticResource TextSecondaryBrush}"/>
-            <Setter Property="FontFamily"  Value="Segoe UI"/>
-            <Setter Property="FontSize"    Value="12"/>
-            <Setter Property="Padding"     Value="0,0,0,3"/>
+            <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="0,0,0,3" />
         </Style>
 
         <!-- ScrollBar -->
         <Style TargetType="ScrollBar">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Width"      Value="6"/>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Width" Value="6" />
         </Style>
 
         <!-- Separator -->
         <Style TargetType="Separator">
-            <Setter Property="Background" Value="{StaticResource BorderBrush}"/>
-            <Setter Property="Height"     Value="1"/>
+            <Setter Property="Background" Value="{StaticResource BorderBrush}" />
+            <Setter Property="Height" Value="1" />
         </Style>
 
         <!-- CheckBox -->
         <Style TargetType="CheckBox">
-            <Setter Property="Foreground"  Value="{StaticResource TextSecondaryBrush}"/>
-            <Setter Property="FontFamily"  Value="Segoe UI"/>
-            <Setter Property="FontSize"    Value="12"/>
-            <Setter Property="Cursor"      Value="Hand"/>
+            <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="CheckBox">
@@ -267,17 +268,17 @@
                                            Foreground="{StaticResource AccentBrush}"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
-                                           Visibility="Collapsed"/>
+                                           Visibility="Collapsed" />
                             </Border>
-                            <ContentPresenter VerticalAlignment="Center"/>
+                            <ContentPresenter VerticalAlignment="Center" />
                         </StackPanel>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Check" Property="Visibility" Value="Visible"/>
-                                <Setter TargetName="Box"   Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                                <Setter TargetName="Check" Property="Visibility" Value="Visible" />
+                                <Setter TargetName="Box" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Box" Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                                <Setter TargetName="Box" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

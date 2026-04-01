@@ -8,9 +8,9 @@
         Background="{StaticResource BgBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="260"/>
-            <ColumnDefinition Width="1"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="260" />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!-- ── Sidebar ─────────────────────────────────────────── -->
@@ -24,78 +24,80 @@
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="{StaticResource AccentBrush}"
-                               Margin="0,0,0,4"/>
+                               Margin="0,0,0,4" />
                     <TextBlock x:Name="TxtConnectionInfo"
                                Text="Not connected"
                                FontSize="11"
                                Foreground="{StaticResource TextSecondaryBrush}"
                                TextWrapping="Wrap"
-                               Margin="0,0,0,16"/>
+                               Margin="0,0,0,16" />
 
-                    <Separator Margin="0,0,0,16"/>
+                    <Separator Margin="0,0,0,16" />
 
                     <!-- Quick Commands -->
                     <TextBlock Text="QUICK COMMANDS"
                                FontSize="11"
                                FontWeight="SemiBold"
                                Foreground="{StaticResource TextSecondaryBrush}"
-                               Margin="0,0,0,8"/>
+                               Margin="0,0,0,8" />
 
                     <!-- Announce -->
-                    <TextBlock Text="Announce message" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,4,0,3"/>
-                    <TextBox x:Name="TxtAnnounce" Height="32" Margin="0,0,0,5"/>
-                    <Button Content="Announce" Height="32" Margin="0,0,0,5" Click="BtnAnnounce_Click"/>
+                    <TextBlock Text="Announce message" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"
+                               Margin="0,4,0,3" />
+                    <TextBox x:Name="TxtAnnounce" Height="32" Margin="0,0,0,5" />
+                    <Button Content="Announce" Height="32" Margin="0,0,0,5" Click="BtnAnnounce_Click" />
 
                     <!-- Save / Wipe Corpses stacked -->
-                    <Button Content="Save" Height="32" Margin="0,0,0,5" Click="BtnSave_Click"/>
-                    <Button Content="Wipe Corpses" Height="32" Margin="0,0,0,12" Click="BtnWipeCorpses_Click"/>
+                    <Button Content="Save" Height="32" Margin="0,0,0,5" Click="BtnSave_Click" />
+                    <Button Content="Wipe Corpses" Height="32" Margin="0,0,0,12" Click="BtnWipeCorpses_Click" />
 
                     <!-- Player List / Player Data side by side -->
                     <Grid Margin="0,0,0,5">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="6"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="6" />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Content="Player List" Height="32"
-                                Style="{StaticResource SubtleButton}" Click="BtnPlayerList_Click"/>
+                                Style="{StaticResource SubtleButton}" Click="BtnPlayerList_Click" />
                         <Button Grid.Column="2" Content="Player Data" Height="32"
-                                Style="{StaticResource SubtleButton}" Click="BtnPlayerData_Click"/>
+                                Style="{StaticResource SubtleButton}" Click="BtnPlayerData_Click" />
                     </Grid>
 
                     <!-- Server Details -->
                     <Button Content="Server Details" Height="32" Margin="0,0,0,14"
                             Style="{StaticResource SubtleButton}"
-                            Click="BtnServerDetails_Click"/>
+                            Click="BtnServerDetails_Click" />
 
-                    <Separator Margin="0,0,0,12"/>
+                    <Separator Margin="0,0,0,12" />
 
                     <!-- Ban / Kick -->
-                    <TextBlock Text="Player ID" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,3"/>
-                    <TextBox x:Name="TxtPlayerId" Height="32" Margin="0,0,0,6"/>
+                    <TextBlock Text="Player ID" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"
+                               Margin="0,0,0,3" />
+                    <TextBox x:Name="TxtPlayerId" Height="32" Margin="0,0,0,6" />
                     <Grid Margin="0,0,0,10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="6"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="6" />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Content="Kick" Height="32"
-                                Style="{StaticResource SubtleButton}" Click="BtnKick_Click"/>
+                                Style="{StaticResource SubtleButton}" Click="BtnKick_Click" />
                         <Button Grid.Column="2" Content="Ban" Height="32"
-                                Style="{StaticResource DangerButton}" Click="BtnBan_Click"/>
+                                Style="{StaticResource DangerButton}" Click="BtnBan_Click" />
                     </Grid>
                 </StackPanel>
             </ScrollViewer>
         </Border>
 
         <!-- Divider -->
-        <Border Grid.Column="1" Background="{StaticResource BorderBrush}"/>
+        <Border Grid.Column="1" Background="{StaticResource BorderBrush}" />
 
         <!-- ── Main Panel ────────────────────────────────────────── -->
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!-- Console output -->
@@ -109,7 +111,7 @@
                          Padding="12,10,12,4"
                          IsReadOnly="True"
                          VerticalScrollBarVisibility="Auto"
-                         TextChanged="RtbConsole_TextChanged"/>
+                         TextChanged="RtbConsole_TextChanged" />
 
             <!-- Input row -->
             <Border Grid.Row="1"
@@ -119,19 +121,19 @@
                     Padding="10,8,10,10">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="8"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="TxtCommand"
                              Grid.Column="0"
                              Height="34"
-                             KeyDown="TxtCommand_KeyDown"/>
+                             KeyDown="TxtCommand_KeyDown" />
                     <Button Grid.Column="2"
                             Content="Send"
                             Height="34"
                             Padding="20,0"
-                            Click="BtnSend_Click"/>
+                            Click="BtnSend_Click" />
                 </Grid>
             </Border>
         </Grid>
