@@ -1,56 +1,120 @@
-# The Isle Evrima RCON
-Windows application client for accessing a The Isle Evrima RCON server.
+﻿# The Isle Evrima RCON — WPF
 
-![Showcase Connection Form](/docs/form_connection.png)
-![Showcase Main Form](/docs/form_main.png)
+A dark-themed WPF desktop client for managing a **The Isle Evrima** RCON server.  
+Built on [TheIsleEvrimaRconClient](https://www.nuget.org/packages/TheIsleEvrimaRconClient) v2.0.0, targeting .NET 8.
 
-# Pre-requisites
-This project is written in C# using .NET 8 and requires the .NET 8 runtime.
+---
 
- - .NET 8 Desktop Runtime (https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
- - Enabled RCON on your The Isle Evrima server
+## Pre-requisites
 
-# Getting started
-1. First install the .NET 8 Desktop Runtime if you don't already have it.
-2. Download the latest release (or build the project yourself) and copy the application files wherever you want.
-3. Make sure your Evrima server has RCON set up.
-4. Run the **TheIsleEvrimaRcon.exe** and connect to your The Isle Evrima server.
+- [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- RCON enabled on your The Isle Evrima server (see [Enabling RCON](#enabling-rcon-on-an-evrima-server))
 
-# How To Use
-The client is very bare bones and does not contain any complex features.
+---
 
-It is split into 3 sections:
-1. **Quick commands**, select a command from the dropdown menu, fill out the argument in the textbox on the right (in case of Announce, Ban, Kick, etc. commands) and click Execute. The output will show up in the console window. This is the recommended way of executing commands as the list contains all of currently available Evrima RCON commands.
-2. **Console**, displays your entered commands and any output returned from the server. Read-only.
-3. **Manual commands**, enter and execute commands yourself. The output in the console window will be raw data returned from the server. (for example in case of the "playerlist" command)
+## Getting Started
 
-![Main Form Legend](/docs/form_main_sections.png)
+1. Install the .NET 8 Desktop Runtime if you haven't already.
+2. Download the latest release (or build the project) and place the files wherever you like.
+3. Run **TheIsleEvrimaRconWPF.exe**.
+4. Enter your server IP, RCON port, and password in the connection dialog and click **Connect**.
 
-# RCON Documentation from Evrima devs
-https://docs.google.com/document/d/1JI_qVdKIZrqcVTY2Tqnm1T_Ws3_1r5nINGxfprbWw7w/edit#heading=h.p9tfb89b07jd
+---
 
-# Enabling RCON on Evrima server
-To enable RCON on your The Isle Evrima server, open the `Game.ini` config file located in `...\Saved\Config\WindowsServer` and do the following.
+## Connection Dialog
 
-Under `[/script/theisle.tigamesession]` add/edit these settings:
-```ini
-bRconEnabled=true
-RconPassword=enter_rcon_password
-RconPort=8888
+On startup a connection window appears with three fields:
+
+| Field | Description |
+| --- | --- |
+| **Host** | IP address of your server (e.g. `198.244.228.180`) |
+| **Port** | RCON port configured on the server (default `8888`) |
+| **Password** | RCON password set in `Game.ini` |
+
+- Use **Show password** to toggle password visibility.
+- On a successful connection the details are saved to `rcon.con` next to the executable so they are pre-filled next time.
+
+---
+
+## Main Window
+
+The window is split into two panels.
+
+### Left sidebar — Quick Commands
+
+The sidebar shows the connected server name (fetched automatically on load) and connection address at the top, followed by a set of one-click command buttons:
+
+| Button | Description |
+| --- | --- |
+| **Announce** | Broadcasts the message typed in the field above to all online players |
+| **Save** | Saves all game data |
+| **Wipe Corpses** | Removes all corpses from the world |
+| **Player List** | Lists all online players with their Player IDs |
+| **Player Data** | Shows detailed stats (class, growth, health, stamina, location) for every online player |
+| **Server Details** | Displays the full server configuration |
+| **Kick** | Kicks the player whose ID is entered in the field above the buttons |
+| **Ban** | Bans the player whose ID is entered (prompts for confirmation first) |
+
+> Player IDs are EOS or Steam IDs. Use **Player List** to look them up.
+
+### Right panel — Console & Command Input
+
+The right side contains:
+
+- **Console log** — colour-coded output of all activity:
+  - **Gold** — commands sent
+  - **White** — server responses
+  - **Green** — success messages
+  - **Red** — errors and connection failures
+  - **Grey** — timestamps and informational messages
+
+- **Command bar** (bottom) — type any raw RCON command and press **Enter** or **Send**. The raw server response is printed to the console. Type `help` to see a full list of available commands.
+
+---
+
+## Available RCON Commands
+
+Type `help` in the command bar at any time to print this list to the console.
+
+| Command | Arguments | Description |
+| --- | --- | --- |
+| `announce` | `<message>` | Announce a message to all players |
+| `directmessage` | `<playerId> <message>` | Send a direct message to a specific player |
+| `playerlist` | — | List all online players |
+| `getplayerdata` | — | Detailed stats for every online player |
+| `serverdetails` | — | Full server configuration |
+| `save` | — | Save all game data |
+| `wipecorpses` | — | Remove all corpses |
+| `ban` | `<playerId>` | Ban a player (EOS or Steam ID) |
+| `kick` | `<playerId>` | Kick a player (EOS or Steam ID) |
+| `togglewhitelist` | — | Toggle the server whitelist on/off |
+| `addwhitelistid` | `<id[,id,...]>` | Add player(s) to the whitelist |
+| `removewhitelistid` | `<id[,id,...]>` | Remove player(s) from the whitelist |
+| `toggleglobalchat` | — | Toggle global chat on/off |
+| `togglehumans` | — | Toggle humans on/off |
+| `toggleai` | — | Toggle AI spawns on/off |
+| `disableaiclasses` | `<class[,class,...]>` | Update the AI spawn class list |
+| `aidensity` | `<0.0–1.0>` | Set AI spawn density |
+| `updateplayables` | `<class[,class,...]>` | Set playable classes |
+
+---
+
+## Important Notes
+
+- RCON is an **unencrypted** protocol — the password and all commands are transmitted in plain text. Avoid using it over untrusted networks; prefer a local network or VPN.
+- Connection details (host, port, password) are stored in plain text in `rcon.con` next to the executable.
+
+---
+
+## Building from Source
+
+```
+dotnet build TheIsleEvrimaRcon.csproj
 ```
 
-And under `[/Script/Engine.Game]` add/edit these settings:
-```ini
-RconEnabled=true
-RconPassword=enter_rcon_password
-RconPort=8888
-```
+Requires .NET 8 SDK. The project uses:
 
-**NOTE**: Make sure the password and port are the same in both settings!
+- `TheIsleEvrimaRconClient` v2.0.0 (NuGet)
+- `net8.0-windows` target framework
+- WPF (`UseWPF`)
 
-Also make sure to open port `8888` (or the port you set in the settings) in **Firewall**!
-
-# Important notes
-RCON is an unencrypted protocol, which means the password is sent in plain text over the network!
-
-Be careful with using it outside your server's network!

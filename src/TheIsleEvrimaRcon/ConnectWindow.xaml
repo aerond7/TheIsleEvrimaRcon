@@ -1,0 +1,71 @@
+﻿<Window x:Class="TheIsleEvrimaRcon.ConnectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Evrima RCON :: Connect"
+        Width="400" Height="340"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BgBrush}">
+    <Grid Margin="28,24,28,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="16" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0"
+                   Text="Evrima RCON"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource AccentBrush}" />
+
+        <!-- Host -->
+        <StackPanel Grid.Row="2">
+            <Label Content="HOST" />
+            <TextBox x:Name="TxtHost" Height="32" />
+        </StackPanel>
+
+        <!-- Port + Password row -->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="12" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Label Content="PORT" />
+                <TextBox x:Name="TxtPort" Height="32" />
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <Label Content="PASSWORD" />
+                <Grid>
+                    <PasswordBox x:Name="PbPassword" Height="32" x:FieldModifier="private" />
+                    <TextBox x:Name="TxtPasswordVisible" Height="32" Visibility="Collapsed" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <!-- Show password checkbox -->
+        <CheckBox Grid.Row="6"
+                  x:Name="ChkShowPassword"
+                  Content="Show password"
+                  Foreground="{StaticResource TextSecondaryBrush}"
+                  FontSize="12"
+                  Checked="ChkShowPassword_Checked"
+                  Unchecked="ChkShowPassword_Unchecked" />
+
+        <!-- Connect button -->
+        <Button Grid.Row="8"
+                x:Name="BtnConnect"
+                Content="Connect"
+                Height="36"
+                Click="BtnConnect_Click" />
+    </Grid>
+</Window>
