@@ -1,7 +1,7 @@
 ﻿# The Isle Evrima RCON — WPF
 
-A dark-themed WPF desktop client for managing a **The Isle Evrima** RCON server.  
-Built on [TheIsleEvrimaRconClient](https://www.nuget.org/packages/TheIsleEvrimaRconClient) v2.0.0, targeting .NET 8.
+A WPF desktop client for managing a **The Isle Evrima** RCON server.
+Built on [TheIsleEvrimaRconClient](https://www.nuget.org/packages/TheIsleEvrimaRconClient) v2.1.0, targeting .NET 8.
 
 ---
 
@@ -16,7 +16,7 @@ Built on [TheIsleEvrimaRconClient](https://www.nuget.org/packages/TheIsleEvrimaR
 
 1. Install the .NET 8 Desktop Runtime if you haven't already.
 2. Download the latest release (or build the project) and place the files wherever you like.
-3. Run **TheIsleEvrimaRconWPF.exe**.
+3. Run **TheIsleEvrimaRcon.exe**.
 4. Enter your server IP, RCON port, and password in the connection dialog and click **Connect**.
 
 ---
@@ -25,11 +25,11 @@ Built on [TheIsleEvrimaRconClient](https://www.nuget.org/packages/TheIsleEvrimaR
 
 On startup a connection window appears with three fields:
 
-| Field | Description |
-| --- | --- |
-| **Host** | IP address of your server (e.g. `198.244.228.180`) |
+| Field | Description                                         |
+| --- |-----------------------------------------------------|
+| **Host** | IP address of your server (e.g. `127.0.0.1`)        |
 | **Port** | RCON port configured on the server (default `8888`) |
-| **Password** | RCON password set in `Game.ini` |
+| **Password** | RCON password set in `Game.ini`                     |
 
 - Use **Show password** to toggle password visibility.
 - On a successful connection the details are saved to `rcon.con` next to the executable so they are pre-filled next time.
@@ -78,24 +78,25 @@ Type `help` in the command bar at any time to print this list to the console.
 
 | Command | Arguments | Description |
 | --- | --- | --- |
+| `help` | — | Show this help |
 | `announce` | `<message>` | Announce a message to all players |
-| `directmessage` | `<playerId> <message>` | Send a direct message to a specific player |
-| `playerlist` | — | List all online players |
-| `getplayerdata` | — | Detailed stats for every online player |
-| `serverdetails` | — | Full server configuration |
-| `save` | — | Save all game data |
+| `directmessage` | `<player>,<message>` | Send a direct message to a player (EOS or Steam ID or Name) |
+| `playerlist` | — | List online players |
+| `getplayerdata` | — | Detailed stats per player |
+| `serverdetails` | — | Server configuration |
+| `save` | `<backupName *optional*>` | Save game data |
 | `wipecorpses` | — | Remove all corpses |
-| `ban` | `<playerId>` | Ban a player (EOS or Steam ID) |
-| `kick` | `<playerId>` | Kick a player (EOS or Steam ID) |
-| `togglewhitelist` | — | Toggle the server whitelist on/off |
-| `addwhitelistid` | `<id[,id,...]>` | Add player(s) to the whitelist |
-| `removewhitelistid` | `<id[,id,...]>` | Remove player(s) from the whitelist |
-| `toggleglobalchat` | — | Toggle global chat on/off |
-| `togglehumans` | — | Toggle humans on/off |
-| `toggleai` | — | Toggle AI spawns on/off |
-| `disableaiclasses` | `<class[,class,...]>` | Update the AI spawn class list |
-| `aidensity` | `<0.0–1.0>` | Set AI spawn density |
-| `updateplayables` | `<class[,class,...]>` | Set playable classes |
+| `ban` | `<player>,<reason>` | Ban a player (EOS or Steam ID or Name) |
+| `kick` | `<player>,<reason>` | Kick a player (EOS or Steam ID or Name) |
+| `togglewhitelist` | `<0/1>` | Toggle server whitelist (0=disabled, 1=enabled) |
+| `addwhitelistid` | `<playerId>` | Add player(s) to whitelist |
+| `removewhitelistid` | `<playerId>` | Remove player(s) from whitelist |
+| `toggleglobalchat` | `<0/1>` | Toggle global chat (0=disabled, 1=enabled) |
+| `togglehumans` | `<0/1>` | Toggle humans (0=disabled, 1=enabled) |
+| `toggleai` | `<0/1>` | Toggle AI spawns (0=disabled, 1=enabled) |
+| `disableaiclasses` | `<class[,class]>` | Update AI spawn list |
+| `aidensity` | `<0.0-1.0>` | Set AI spawn density |
+| `updateplayables` | `<class:enabled/disabled>` | Set playable classes |
 
 ---
 
@@ -114,7 +115,7 @@ dotnet build TheIsleEvrimaRcon.csproj
 
 Requires .NET 8 SDK. The project uses:
 
-- `TheIsleEvrimaRconClient` v2.0.0 (NuGet)
+- `TheIsleEvrimaRconClient` v2.1.0 (NuGet)
 - `net8.0-windows` target framework
 - WPF (`UseWPF`)
 
